@@ -4,8 +4,8 @@ import { AuthProvider } from "./context/AuthContext";
 import { AdminProvider } from "./context/AdminContext";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import AdminRoutes from "./components/AdminRoutes";
-import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Vote from "./pages/Vote";
@@ -17,9 +17,9 @@ function App() {
   return (
     <AuthProvider>
       <AdminProvider>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />

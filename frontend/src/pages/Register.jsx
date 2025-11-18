@@ -31,21 +31,36 @@ const Register = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <h1>Register</h1>
-        <input
-          name="username"
-          type="text"
-          placeholder="Username"
-          onChange={handleChange}
-        />
-        <input
-          name="email"
-          type="email"
-          placeholder="E-Mail"
-          onChange={handleChange}
-        />
-        <input name="password" type="password" onChange={handleChange} />
-        <button type="submit">Register</button>
-        <p>{msg}</p>
+        <div className="flex flex-col gap-2">
+          <div>
+            <input
+              name="username"
+              type="text"
+              placeholder="Username"
+              onChange={handleChange}
+              className="bg-zinc-500 text-white focus:outline-none"
+            />
+          </div>
+          <div>
+            <input
+              name="email"
+              type="email"
+              placeholder="E-Mail"
+              onChange={handleChange}
+              className="bg-zinc-500 text-white focus:outline-none"
+            />
+          </div>
+          <div>
+            <input
+              name="password"
+              type="password"
+              onChange={handleChange}
+              className="bg-zinc-500 text-white focus:outline-none"
+            />
+          </div>
+          <button type="submit">Register</button>
+          <p>{msg}</p>
+        </div>
       </form>
     </div>
   );
