@@ -28,19 +28,24 @@ const Login = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Login</h2>
-        <input
-          name="email"
-          type="email"
-          placeholder="E-Mail"
-          onChange={handleChange}
-        />
-        <input name="password" type="password" onChange={handleChange} />
-        <button type="submit">Login</button>
-        <p>{msg}</p>
-      </form>
+    <div className="flex h-[50vh] items-center justify-center">
+      <div className="w-[50%] border-2 px-[40px] py-[50px] mt-[200px] border-gray-300">
+        <form onSubmit={handleSubmit}>
+          <div>
+            <h2 className="text-6xl text-center">Sign In</h2>
+            <h2>Access Your Account</h2>
+          </div>
+          <input
+            name="email"
+            type="email"
+            placeholder="E-Mail"
+            onChange={handleChange}
+          />
+          <input name="password" type="password" onChange={handleChange} />
+          <button type="submit">Login</button>
+          <p>{msg}</p>
+        </form>
+      </div>
     </div>
   );
 };

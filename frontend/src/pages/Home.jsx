@@ -15,8 +15,8 @@ const Home = () => {
               src={image1}
             />
           </div>
-          <div className="flex flex-col justify-center mb-[100px]">
-            <div className="text-[100px] dark:text-[#CEE8F5] text-center md:text-start animate-bounce">
+          <div className="flex flex-col justify-center mb-[100px] p-2">
+            <div className="text-[70px] md:text-[100px] dark:text-[#CEE8F5] text-center md:text-start animate-bounce">
               Online Voting
             </div>
             <div className="text-[40px] dark:text-[#CEE8F5] text-center md:text-start">

@@ -28,40 +28,52 @@ const Register = () => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h1>Register</h1>
-        <div className="flex flex-col gap-2">
-          <div>
-            <input
-              name="username"
-              type="text"
-              placeholder="Username"
-              onChange={handleChange}
-              className="bg-zinc-500 text-white focus:outline-none"
-            />
+    <div className="flex h-[50vh] items-center justify-center">
+      <div className="w-[50%] border-2 px-[40px] py-[50px] mt-[200px] border-gray-300">
+        <form onSubmit={handleSubmit}>
+          <h1 className="text-6xl text-center mb-8">Register</h1>
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-col">
+              <label className="text-[24px]">Username</label>
+              <input
+                name="username"
+                type="text"
+                placeholder="Username"
+                onChange={handleChange}
+                className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-[24px]">E-Mail</label>
+              <input
+                name="email"
+                type="email"
+                placeholder="E-Mail"
+                onChange={handleChange}
+                className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+              />
+            </div>
+
+            <div className="flex flex-col">
+              <label className="text-[24px]">Password</label>
+              <input
+                name="password"
+                type="password"
+                onChange={handleChange}
+                className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+              />
+            </div>
+            <button
+              type="submit"
+              className="text-[26px] bg-black text-white py-2 mt-2"
+            >
+              Register
+            </button>
+            <p>{msg}</p>
           </div>
-          <div>
-            <input
-              name="email"
-              type="email"
-              placeholder="E-Mail"
-              onChange={handleChange}
-              className="bg-zinc-500 text-white focus:outline-none"
-            />
-          </div>
-          <div>
-            <input
-              name="password"
-              type="password"
-              onChange={handleChange}
-              className="bg-zinc-500 text-white focus:outline-none"
-            />
-          </div>
-          <button type="submit">Register</button>
-          <p>{msg}</p>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
