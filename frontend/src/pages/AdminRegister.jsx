@@ -53,7 +53,7 @@ const AdminRegister = () => {
   return (
     <div>
       <Toaster />
-      <div className="dark:bg-zinc-500 bg-zinc-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
+      <div className="dark:bg-slate-500 bg-slate-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
         <Navbar />
       </div>
       <div className="flex h-[50vh] items-center justify-center p-2">
@@ -91,7 +91,6 @@ const AdminRegister = () => {
                   <input
                     type={isText ? "text" : "password"}
                     name="password"
-                    placeholder="Admin Password"
                     onChange={handleChange}
                     className="text-black text-[22px] focus:outline-none p-2 w-[100%]"
                   />

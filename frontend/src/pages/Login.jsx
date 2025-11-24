@@ -29,6 +29,7 @@ const Login = () => {
         "http://localhost:3000/api/authentication/login",
         form
       );
+
       toast.success("Sign In successful", {
         className: "md:text-2xl mr-4",
         position: "bottom-right",
@@ -57,10 +58,10 @@ const Login = () => {
         <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] px-[15px] md:py-[50px] mt-[20px] md:mt-[200px] border-gray-300">
           <form onSubmit={handleSubmit}>
             <div className="mb-8">
-              <h2 className="text-3xl md:text-6xl text-center mb-2">Sign In</h2>
-              <h2 className="text-1xl md:text-2xl text-center">
+              <h1 className="text-3xl md:text-6xl text-center mb-2">Sign In</h1>
+              <h1 className="text-1xl md:text-2xl text-center">
                 Access Your Account
-              </h2>
+              </h1>
             </div>
 
             <div className="flex flex-col gap-2">
