@@ -6,7 +6,7 @@ const Vote = () => {
   const [candidate, setCandidate] = useState([]);
   const [selected, setSelected] = useState("");
   const [msg, setMsg] = useState("");
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const fetchCandidates = async () => {
@@ -36,6 +36,12 @@ const Vote = () => {
       setMsg(error.response?.data?.msg || "Vote Failed");
     }
   };
+
+  const handleLogout = () => {
+    logout();
+    Navigate("/home");
+  };
+
   return (
     <div>
       <h2>Vote for a candidate</h2>
@@ -52,6 +58,9 @@ const Vote = () => {
           ))}
         </select>
         <button type="submit">Submit Vote</button>
+        <button type="button" onClick={handleLogout}>
+          Logout
+        </button>
       </form>
       <p>{msg}</p>
     </div>

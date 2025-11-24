@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import toast, { Toaster } from "react-hot-toast";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AdminRegister = () => {
   const [form, setForm] = useState({
@@ -9,8 +12,13 @@ const AdminRegister = () => {
     password: "",
     secretKey: "",
   });
+  const [isText, setIsText] = useState(false);
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
+
+  const handleVisibility = () => {
+    setIsText((prev) => !prev);
+  };
 
   const handleChange = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
@@ -24,44 +32,100 @@ const AdminRegister = () => {
         "http://localhost:3000/api/admin/register",
         form
       );
-      setMsg(res.data.msg);
-      console.log("Admin registered successfully");
-      navigate("/admin");
+
+      toast.success("Registration successful", {
+        className: "md:text-2xl mr-4",
+        position: "bottom-right",
+        duration: 3000,
+      });
+
+      setTimeout(() => {
+        navigate("/admin");
+      }, 4000);
     } catch (error) {
-      setMsg(error.response?.data?.msg || "Registeration Failed");
+      toast.error("Admin Registration failed", {
+        className: "md:text-2xl mr-4",
+        position: "bottom-right",
+        duration: 5000,
+      });
     }
   };
   return (
     <div>
-      <h1>Admin Register</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Admin Name"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="email"
-          placeholder="Admin E-Mail"
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Admin Password"
-          onChange={handleChange}
-        />
-        <input
-          type="text"
-          name="secretKey"
-          placeholder="Admin Secret Key"
-          onChange={handleChange}
-        />
+      <Toaster />
+      <div className="dark:bg-zinc-500 bg-zinc-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
+        <Navbar />
+      </div>
+      <div className="flex h-[50vh] items-center justify-center p-2">
+        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[200px] md:mt-[250px] border-gray-300">
+          <form onSubmit={handleSubmit}>
+            <h1 className="text-3xl md:text-6xl text-center mb-8">
+              Admin Register
+            </h1>
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col">
+                <label className="text-[24px]">Admin Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Admin Name"
+                  onChange={handleChange}
+                  className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+                />
+              </div>
 
-        <button type="submit">Register Admin</button>
-      </form>
+              <div className="flex flex-col">
+                <label className="text-[24px]">Admin E-Mail:</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="Admin E-Mail"
+                  onChange={handleChange}
+                  className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-[24px]">Admin Password:</label>
+                <div className="border-2 border-gray-300 flex">
+                  <input
+                    type={isText ? "text" : "password"}
+                    name="password"
+                    placeholder="Admin Password"
+                    onChange={handleChange}
+                    className="text-black text-[22px] focus:outline-none p-2 w-[100%]"
+                  />
+                  <button
+                    onClick={handleVisibility}
+                    type="button"
+                    className="cursor-pointer md:text-2xl pr-2"
+                  >
+                    {isText ? <FaEye /> : <FaEyeSlash />}
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex flex-col">
+                <label className="text-[24px]">Admin Secret Key:</label>
+                <input
+                  type="text"
+                  name="secretKey"
+                  placeholder="Admin Secret Key"
+                  onChange={handleChange}
+                  className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer"
+              >
+                Register Admin
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   );
 };
