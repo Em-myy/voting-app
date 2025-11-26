@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
 
 const Vote = () => {
   const [candidate, setCandidate] = useState([]);
   const [selected, setSelected] = useState("");
   const [msg, setMsg] = useState("");
   const { user, logout } = useAuth();
+  const { id: userId } = useParams();
+  const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
     const fetchCandidates = async () => {
@@ -18,6 +22,22 @@ const Vote = () => {
       }
     };
     fetchCandidates();
+  }, []);
+
+  useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:3000/api/authentication/profile",
+
+          { headers: { Authorization: `Bearer ${user.token}` } }
+        );
+        setUserDetails(res.data.user);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchDetails();
   }, []);
 
   const handleVote = async (event) => {
@@ -37,13 +57,13 @@ const Vote = () => {
     }
   };
 
-  const handleLogout = () => {
-    logout();
-    Navigate("/home");
-  };
-
   return (
     <div>
+      <Navbar />
+      <div>
+        <h1>Welcome {userDetails.username}</h1>
+      </div>
+
       <h2>Vote for a candidate</h2>
       <form onSubmit={handleVote}>
         <select
@@ -58,9 +78,6 @@ const Vote = () => {
           ))}
         </select>
         <button type="submit">Submit Vote</button>
-        <button type="button" onClick={handleLogout}>
-          Logout
-        </button>
       </form>
       <p>{msg}</p>
     </div>

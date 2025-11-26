@@ -24,8 +24,21 @@ const Navbar = () => {
 
         {user ? (
           <>
-            <Link to="/vote">Vote</Link>
-            <button onClick={logout}>Logout</button>
+            <div className="text-[#2F46F5] dark:text-[#CEE8F5] flex flex-col md:flex-row items-center gap-x-4">
+              <Link
+                to="/vote"
+                className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700"
+              >
+                Vote
+              </Link>
+
+              <button
+                onClick={logout}
+                className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700 cursor-pointer"
+              >
+                Logout
+              </button>
+            </div>
           </>
         ) : (
           <div className="text-[#2F46F5] dark:text-[#CEE8F5] flex flex-col md:flex-row gap-x-4 items-center">

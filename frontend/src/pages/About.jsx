@@ -4,10 +4,10 @@ const About = () => {
   return (
     <div className="dark:bg-[#366075] h-[100%] p-2">
       <Navbar />
-      <div className="text-5xl md:text-8xl text-center">About Us</div>
+      <div className="text-5xl md:text-8xl text-center pb-2">About Us</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="flex flex-col gap-y-2">
-          <div className="bg-[#747FB3] dark:bg-[#CAB8A0] text-[24px] p-2 rounded-3xl shadow-xl">
+          <div className="bg-[#747FB3] dark:bg-[#CAB8A0] text-[21px] md:text-[24px] p-2 rounded-3xl shadow-xl">
             Welcome to our Voting Platform. We created this system with one main
             purpose: to make voting easy, secure, and accessible to everyone. We
             believe that every voice matters, and every vote should be counted
@@ -24,7 +24,7 @@ const About = () => {
             transparent manner. This ensures trust in the process and confidence
             in the final outcome.
           </div>
-          <div className="bg-[#4C4F5E] dark:bg-[#755936] text-white text-[24px] p-2 rounded-3xl shadow-xl">
+          <div className="bg-[#4C4F5E] dark:bg-[#755936] text-white text-[21px] md:text-[24px] p-2 rounded-3xl shadow-xl">
             Our Voting System is designed to provide a reliable and secure
             environment for conducting elections. We prioritize transparency,
             accessibility, and accuracy. The platform ensures that all users can
@@ -38,7 +38,7 @@ const About = () => {
             decision-making.
           </div>
         </div>
-        <div className="bg-[#747FB3] dark:bg-[#CAB8A0] text-[24px] p-2 rounded-3xl shadow-xl">
+        <div className="bg-[#747FB3] dark:bg-[#CAB8A0] text-[21px] md:text-[24px] p-2 rounded-3xl shadow-xl">
           Welcome to our voting platform — a space created to amplify voices,
           encourage participation, and promote fairness in decision-making. We
           believe that every opinion matters and every choice has the power to
