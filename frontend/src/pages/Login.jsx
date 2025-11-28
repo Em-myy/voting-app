@@ -8,7 +8,6 @@ import toast, { Toaster } from "react-hot-toast";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
-  const [msg, setMsg] = useState("");
   const [isText, setIsText] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -37,10 +36,12 @@ const Login = () => {
       });
 
       setTimeout(() => {
-        login(res.data.token);
+        login(res.data.token, res.data.user);
+        console.log(res.data);
         navigate("/vote");
       }, 4000);
     } catch (error) {
+      console.log(error);
       toast.error("Sign In Failed", {
         className: "md:text-2xl mr-4",
         position: "bottom-right",
