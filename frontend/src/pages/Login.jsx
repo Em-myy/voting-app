@@ -34,10 +34,8 @@ const Login = () => {
         position: "bottom-right",
         duration: 3000,
       });
-
+      login(res.data.token, res.data.user);
       setTimeout(() => {
-        login(res.data.token, res.data.user);
-        console.log(res.data);
         navigate("/vote");
       }, 4000);
     } catch (error) {
