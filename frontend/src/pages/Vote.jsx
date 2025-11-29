@@ -9,7 +9,6 @@ const Vote = () => {
   const [selected, setSelected] = useState("");
   const [msg, setMsg] = useState("");
   const { user, logout } = useAuth();
-  const { id: userId } = useParams();
   const [userDetails, setUserDetails] = useState([]);
 
   useEffect(() => {
@@ -58,28 +57,32 @@ const Vote = () => {
   };
 
   return (
-    <div>
-      <Navbar />
+    <div className="bg-gray-100">
       <div>
-        <h1>Welcome {userDetails.username}</h1>
+        <Navbar />
+      </div>
+      <div>
+        <h1 className="text-center">Welcome {userDetails.username}</h1>
       </div>
 
-      <h2>Vote for a candidate</h2>
-      <form onSubmit={handleVote}>
-        <select
-          value={selected}
-          onChange={(event) => setSelected(event.target.value)}
-        >
-          <option value="">Select a candidate</option>
-          {candidate.map((index) => (
-            <option key={index._id} value={index._id}>
-              {index.name} ({index.party || "Independent"})
-            </option>
-          ))}
-        </select>
-        <button type="submit">Submit Vote</button>
-      </form>
-      <p>{msg}</p>
+      <div>
+        <h2 className="text-center">Vote for a candidate</h2>
+        <form onSubmit={handleVote}>
+          <select
+            value={selected}
+            onChange={(event) => setSelected(event.target.value)}
+          >
+            <option value="">Select a candidate</option>
+            {candidate.map((index) => (
+              <option key={index._id} value={index._id}>
+                {index.name} ({index.party || "Independent"})
+              </option>
+            ))}
+          </select>
+          <button type="submit">Submit Vote</button>
+        </form>
+        <p>{msg}</p>
+      </div>
     </div>
   );
 };
