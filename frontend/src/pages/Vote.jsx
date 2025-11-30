@@ -62,11 +62,11 @@ const Vote = () => {
         <Navbar />
       </div>
       <div>
-        <h1 className="text-center">Welcome {userDetails.username}</h1>
+        <h1 className="text-center text-2xl">Welcome {userDetails.username}</h1>
       </div>
 
       <div>
-        <h2 className="text-center">Vote for a candidate</h2>
+        <h2 className="text-center text-1xl">Vote for a candidate</h2>
         <form onSubmit={handleVote}>
           <select
             value={selected}
