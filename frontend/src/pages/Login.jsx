@@ -48,7 +48,7 @@ const Login = () => {
     }
   };
   return (
-    <div>
+    <div className="p-2">
       <Toaster />
       <div className="dark:bg-zinc-500 bg-zinc-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
         <Navbar />
@@ -96,7 +96,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer"
+                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer mb-2"
               >
                 Login
               </button>

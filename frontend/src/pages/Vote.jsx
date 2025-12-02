@@ -58,12 +58,13 @@ const Vote = () => {
       setShowMenu(true);
       setMsg(res.data.msg);
     } catch (error) {
+      setShowMenu(true);
       setMsg(error.response?.data?.msg || "Vote Failed");
     }
   };
 
   return (
-    <div className="bg-[#919191] min-h-screen text-white">
+    <div className="bg-[#919191] min-h-screen text-white p-2">
       <div>
         <Navbar />
       </div>
@@ -73,14 +74,14 @@ const Vote = () => {
         </h1>
       </div>
 
-      <div className="mt-2 flex flex-col items-center ">
+      <div className="mt-2 flex flex-col items-center justify-center px-4">
         <h2 className="text-center text-3xl">Vote for a candidate</h2>
-        <form onSubmit={handleVote}>
-          <div className="mt-4">
+        <form onSubmit={handleVote} className="w-full max-w-md">
+          <div className="mt-8">
             <select
               value={selected}
               onChange={(event) => setSelected(event.target.value)}
-              className="text-[24px] focus:outline-none focus:ring-2 focus:ring-[#CEE8F5] p-2 text-gray-700 cursor-pointer rounded-2xl"
+              className="w-full text-[24px] focus:outline-none focus:ring-2 focus:ring-[#CEE8F5] p-2 text-gray-700 cursor-pointer rounded-2xl"
             >
               <option value="" className="">
                 Select a candidate
@@ -92,25 +93,35 @@ const Vote = () => {
               ))}
             </select>
           </div>
-          <button type="submit">Submit Vote</button>
+
+          <button
+            type="submit"
+            className="cursor-pointer text-[24px] text-white dark:text-black bg-[#2F46F5] dark:bg-[#CEE8F5] rounded-lg p-2 w-full mt-[250px]"
+          >
+            Submit Vote
+          </button>
         </form>
       </div>
-      <div>
-        {showMenu ? (
-          <div>
-            <div>{msg}</div>
-            <div onClick={() => setShowMenu(false)}>Close</div>
+      {showMenu ? (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setShowMenu(false)}
+        >
+          <div
+            className="bg-white text-gray-800 p-8 rounded-lg shadow-2xl text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-xl mb-4">{msg}</p>
+            <button
+              onClick={() => setShowMenu(false)}
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Close
+            </button>
           </div>
-        ) : (
-          <div>
-            <div>{msg}</div>
-            <div onClick={() => setShowMenu(false)}>
-              {showMenu ? "Close" : ""}
-            </div>
-          </div>
-        )}
-      </div>
-      <div className="md:fixed md:bottom-0 md:left-0 md:w-full mt-[50px] md:mt-0p-2 shadow-xl">
+        </div>
+      ) : null}
+      <div className="shadow-xl">
         <Footer />
       </div>
     </div>
