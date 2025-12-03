@@ -48,26 +48,37 @@ const Admin = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmitCandidates}>
-        <input
-          type="text"
-          onChange={handleAddCandidates}
-          name="name"
-          value={addCandidates.name}
-          placeholder="Candidate Name"
-          required
-        />
-        <input
-          type="text"
-          onChange={handleAddCandidates}
-          name="party"
-          value={addCandidates.party}
-          placeholder="Candidate party"
-          required
-        />
+      <div className="flex flex-col">
+        <h1 className="text-4xl">Add Candidates</h1>
+        <div>
+          <form onSubmit={handleSubmitCandidates}>
+            <div>
+              <label>Candidate Name:</label>
+              <input
+                type="text"
+                onChange={handleAddCandidates}
+                name="name"
+                value={addCandidates.name}
+                placeholder="Candidate Name"
+                required
+              />
+            </div>
 
-        <button type="submit">Add Candidates</button>
-      </form>
+            <div>
+              <input
+                type="text"
+                onChange={handleAddCandidates}
+                name="party"
+                value={addCandidates.party}
+                placeholder="Candidate party"
+                required
+              />
+            </div>
+
+            <button type="submit">Add Candidates</button>
+          </form>
+        </div>
+      </div>
 
       <button onClick={logout}>Logout of Admin Page</button>
 

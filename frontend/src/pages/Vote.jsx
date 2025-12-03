@@ -64,7 +64,7 @@ const Vote = () => {
   };
 
   return (
-    <div className="bg-[#919191] min-h-screen text-white p-2">
+    <div className="bg-[#898989] min-h-screen text-white p-2">
       <div>
         <Navbar />
       </div>
