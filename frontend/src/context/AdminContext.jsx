@@ -13,7 +13,7 @@ export const AdminProvider = ({ children }) => {
     try {
       const token = localStorage.getItem("adminToken");
       if (token) {
-        setAdmin({ token });
+        setAdmin(token);
       }
     } finally {
       setLoading(false);

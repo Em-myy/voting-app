@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axiosInstance, { setupAxiosInterceptors } from "./axios.js";
 import { useAdmin } from "../context/AdminContext";
 
 const Admin = () => {
@@ -8,9 +8,7 @@ const Admin = () => {
   const { logout, loading, admin } = useAdmin();
 
   useEffect(() => {
-    if (admin) {
-      const token = localStorage.getItem("adminToken");
-    }
+    setupAxiosInterceptors(admin);
   }, [admin]);
 
   const handleAddCandidates = (event) => {
@@ -24,24 +22,13 @@ const Admin = () => {
     event.preventDefault();
 
     try {
-      const token = localStorage.getItem("adminToken");
-
-      console.log("Token from localstorage: " + token);
-
-      if (!token) {
+      if (!admin) {
         console.log("No token found");
         return;
       }
 
-      const res = await axios.post(
-        "http://localhost:3000/api/candidates",
-        addCandidates,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const res = await axiosInstance.post("/candidates", addCandidates);
+
       console.log("Candidates added successfully");
       setAddCandidates({ name: "", party: "" });
       setCandidateResult((prev) => [...prev, res.data.newCandidate]);
@@ -53,15 +40,9 @@ const Admin = () => {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const token = localStorage.getItem("adminToken");
+        if (!admin) return;
 
-        if (!token) return;
-
-        const res = await axios.get("http://localhost:3000/api/candidates", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await axiosInstance.get("/candidates");
         setCandidateResult(res.data);
       } catch (error) {
         console.log(error);

@@ -55,23 +55,24 @@ const Navbar = () => {
             >
               Login
             </Link>
+
+            <div className="text-[#2F46F5] dark:text-[#CEE8F5] flex flex-col md:flex-row gap-x-4 items-center">
+              <Link
+                to="/adminRegister"
+                className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700"
+              >
+                Admin Register
+              </Link>
+
+              <Link
+                to="/adminLogin"
+                className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700"
+              >
+                Admin Login
+              </Link>
+            </div>
           </div>
         )}
-        <div className="text-[#2F46F5] dark:text-[#CEE8F5] flex flex-col md:flex-row gap-x-4 items-center">
-          <Link
-            to="/adminRegister"
-            className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700"
-          >
-            Admin Register
-          </Link>
-
-          <Link
-            to="/adminLogin"
-            className="hover:text-yellow-600 hover:underline hover:decoration-wavy hover:decoration-red-700"
-          >
-            Admin Login
-          </Link>
-        </div>
       </div>
     </nav>
   );
