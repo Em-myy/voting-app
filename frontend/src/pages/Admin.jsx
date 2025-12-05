@@ -60,6 +60,7 @@ const Admin = () => {
                 name="name"
                 value={addCandidates.name}
                 placeholder="Candidate Name"
+                className="text-black text-[22px] focus:outline-none border-2 border-gray-300 p-2"
                 required
               />
             </div>
