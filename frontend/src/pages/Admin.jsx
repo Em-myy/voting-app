@@ -26,6 +26,8 @@ const Admin = () => {
     try {
       const token = localStorage.getItem("adminToken");
 
+      console.log("Token from localstorage: " + token);
+
       if (!token) {
         console.log("No token found");
         return;
