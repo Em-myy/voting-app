@@ -6,24 +6,28 @@ const AdminContext = createContext();
 
 export const AdminProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("adminToken");
-
-    if (token) {
-      setAdmin({ token });
+    try {
+      const token = localStorage.getItem("adminToken");
+      if (token) {
+        setAdmin({ token });
+      }
+    } finally {
+      setLoading(false);
     }
   }, []);
 
   const logout = () => {
     localStorage.removeItem("adminToken");
     setAdmin(null);
-    navigate("/");
+    navigate("/login");
   };
   return (
-    <AdminContext.Provider value={{ admin, setAdmin, logout }}>
-      {children}
+    <AdminContext.Provider value={{ admin, setAdmin, logout, loading }}>
+      {!loading && children}
     </AdminContext.Provider>
   );
 };

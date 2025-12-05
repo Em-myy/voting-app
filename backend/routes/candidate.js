@@ -22,7 +22,7 @@ router.post("/", adminProtect, async (req, res) => {
       .status(201)
       .json({ msg: "candidates added successfully", newCandidate });
   } catch (error) {
-    res.staus(400).json({ msg: "Error creating candidate" });
+    res.status(400).json({ msg: "Error creating candidate" });
   }
 });
 

@@ -35,9 +35,10 @@ const AdminLogin = () => {
         duration: 3000,
       });
 
+      localStorage.setItem("adminToken", res.data.token);
+      setAdmin(res.data.admin);
+
       setTimeout(() => {
-        localStorage.setItem("adminToken", res.data.token);
-        setAdmin(res.data.admin);
         navigate("/admin");
       }, 4000);
     } catch (error) {
