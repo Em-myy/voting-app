@@ -77,7 +77,7 @@ const Admin = () => {
               />
             </div>
 
-            <div className="flex flex-col mb-6">
+            <div className="flex flex-col mb-6 chfhufhvufuvfyvydgycjj">
               <label className="text-[24px]">Candidate Party</label>
               <input
                 type="text"
