@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosInstance, { setupAxiosInterceptors } from "./axios.js";
 import { useAdmin } from "../context/AdminContext";
+import ChartComponent from "../components/ChartComponent.jsx";
 
 const Admin = () => {
   const [addCandidates, setAddCandidates] = useState({ name: "", party: "" });
@@ -54,6 +55,18 @@ const Admin = () => {
     }
   }, [admin]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCandidateResult((prev) =>
+        prev.map((item) => ({
+          ...item,
+        }))
+      );
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -62,7 +75,7 @@ const Admin = () => {
     <div>
       <div className="flex flex-col w-[100%] items-center px-2 py-8">
         <h1 className="text-6xl mb-2">Add Candidates</h1>
-        <div className="w-[70%] bg-[#F6F6F6] rounded-md p-12">
+        <div className="w-[70%] bg-[#F6F6F6] rounded-xl p-12">
           <form onSubmit={handleSubmitCandidates}>
             <div className="flex flex-col mb-2">
               <label className="text-[24px]">Candidate Name:</label>
@@ -117,6 +130,15 @@ const Admin = () => {
             <div>{candidate.votes}</div>
           </div>
         ))}
+      </div>
+
+      <div>
+        <ChartComponent
+          dataArray={candidateResult}
+          labelKey="name"
+          valueKey="votes"
+          chartLabel="Election Results"
+        />
       </div>
     </div>
   );
