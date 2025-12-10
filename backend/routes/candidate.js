@@ -1,13 +1,15 @@
 import express from "express";
 import Candidate from "../model/Candidate.js";
 import { adminProtect } from "../middleware/adminProtect.js";
-import User from "../model/User.js";
+import { Server } from "socket.io";
 
 const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
     const candidates = await Candidate.find();
+
+    const io = new Server();
     res.json(candidates);
   } catch (error) {
     res.status(500).json({ msg: "Error finding candidates" });
