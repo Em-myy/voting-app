@@ -5,13 +5,12 @@ import { Server } from "socket.io";
 
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/api/candidates", async (req, res) => {
   try {
     const candidates = await Candidate.find();
-
-    const io = new Server();
-    res.json(candidates);
+    res.send(candidates);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ msg: "Error finding candidates" });
   }
 });

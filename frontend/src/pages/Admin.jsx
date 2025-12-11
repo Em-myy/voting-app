@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axiosInstance, { setupAxiosInterceptors } from "./axios.js";
 import { useAdmin } from "../context/AdminContext";
 import ChartComponent from "../components/ChartComponent.jsx";
+import { io } from "socket.io-client";
 
 const Admin = () => {
   const [addCandidates, setAddCandidates] = useState({ name: "", party: "" });
@@ -39,12 +40,15 @@ const Admin = () => {
   };
 
   useEffect(() => {
-    const fetchResults = async () => {
+    const fetchResults = () => {
       try {
         if (!admin) return;
 
-        const res = await axiosInstance.get("/candidates");
-        setCandidateResult(res.data);
+        const socket = io("http://localhost:3000");
+        console.log(socket);
+        socket.on("results", (data) => {
+          setCandidateResult(data);
+        });
       } catch (error) {
         console.log(error);
       }
@@ -54,22 +58,6 @@ const Admin = () => {
       fetchResults();
     }
   }, [admin]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCandidateResult((prev) =>
-        prev.map((item) => ({
-          ...item,
-        }))
-      );
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
