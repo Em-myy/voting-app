@@ -12,6 +12,8 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const VOTER_TOAST_ID = "voter_login_configuration";
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -30,6 +32,7 @@ const Login = () => {
       );
 
       toast.success("Sign In successful", {
+        id: VOTER_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 3000,
@@ -39,8 +42,8 @@ const Login = () => {
         navigate("/vote");
       }, 4000);
     } catch (error) {
-      console.log(error);
       toast.error("Sign In Failed", {
+        id: VOTER_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 5000,

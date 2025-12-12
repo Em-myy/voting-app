@@ -12,6 +12,8 @@ const AdminLogin = () => {
   const [isText, setIsText] = useState(false);
   const [hasShown, setHasShown] = useState(false);
 
+  const ADMIN_TOAST_ID = "admin_register_configuration";
+
   const { setAdmin } = useAdmin();
 
   const handleVisibility = () => {
@@ -30,24 +32,22 @@ const AdminLogin = () => {
         form
       );
 
-      if (!hasShown) {
-        toast.success("Sign In successful", {
-          className: "md:text-2xl mr-4",
-          position: "bottom-right",
-          duration: 3000,
-        });
+      toast.success("Sign In successful", {
+        id: ADMIN_TOAST_ID,
+        className: "md:text-2xl mr-4",
+        position: "bottom-right",
+        duration: 3000,
+      });
 
-        localStorage.setItem("adminToken", res.data.token);
-        setAdmin(res.data.admin);
+      localStorage.setItem("adminToken", res.data.token);
+      setAdmin(res.data.admin);
 
-        setTimeout(() => {
-          navigate("/admin");
-        }, 4000);
-
-        setHasShown(true);
-      }
+      setTimeout(() => {
+        navigate("/admin");
+      }, 4000);
     } catch (error) {
       toast.error("Sign In Failed, Likely Not an Admin ", {
+        id: ADMIN_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 5000,

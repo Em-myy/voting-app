@@ -16,6 +16,8 @@ const AdminRegister = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
+  const ADMIN_TOAST_ID = "admin_register_configuration";
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -34,6 +36,7 @@ const AdminRegister = () => {
       );
 
       toast.success("Registration successful", {
+        id: ADMIN_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 3000,
@@ -44,6 +47,7 @@ const AdminRegister = () => {
       }, 4000);
     } catch (error) {
       toast.error("Admin Registration failed", {
+        id: ADMIN_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 5000,

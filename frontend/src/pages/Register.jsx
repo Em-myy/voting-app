@@ -13,6 +13,8 @@ const Register = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  const VOTER_TOAST_ID = "voter_register_configuration";
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -31,6 +33,7 @@ const Register = () => {
       );
 
       toast.success("Registration successful", {
+        id: VOTER_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 3000,
@@ -42,6 +45,7 @@ const Register = () => {
       }, 4000);
     } catch (error) {
       toast.error("Registration Failed", {
+        id: VOTER_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",
         duration: 5000,
