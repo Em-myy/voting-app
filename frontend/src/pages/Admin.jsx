@@ -7,7 +7,9 @@ import { io } from "socket.io-client";
 const Admin = () => {
   const [addCandidates, setAddCandidates] = useState({ name: "", party: "" });
   const [candidateResult, setCandidateResult] = useState([]);
-  const { logout, loading, admin } = useAdmin();
+  const { logout, admin } = useAdmin();
+  const [msg, setMsg] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     adminSetupAxiosInterceptors(admin) ||
@@ -31,12 +33,13 @@ const Admin = () => {
       }
 
       const res = await axiosInstance.post("/candidates", addCandidates);
-
-      console.log("Candidates added successfully");
       setAddCandidates({ name: "", party: "" });
       setCandidateResult((prev) => [...prev, res.data.newCandidate]);
+      setMsg("Candidate added successfully");
+      setShowMenu(true);
     } catch (error) {
-      console.log(error);
+      setMsg("Error adding candidate");
+      setShowMenu(true);
     }
   };
 
@@ -114,6 +117,26 @@ const Admin = () => {
           </form>
         </div>
       </div>
+
+      {showMenu ? (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setShowMenu(false)}
+        >
+          <div
+            className="bg-white text-gray-800 p-8 rounded-lg shadow-2xl text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="text-xl mb-4">{msg}</p>
+            <button
+              onClick={() => setShowMenu(false)}
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      ) : null}
 
       <div className="flex justify-center">
         <div>
