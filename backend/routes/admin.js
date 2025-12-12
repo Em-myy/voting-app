@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
     await admin.save();
 
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
 
     res.json({
@@ -62,7 +62,7 @@ router.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
+      expiresIn: "1d",
     });
     res.json({
       msg: "Admin logged in successfully",

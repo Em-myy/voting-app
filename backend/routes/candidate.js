@@ -1,11 +1,10 @@
 import express from "express";
 import Candidate from "../model/Candidate.js";
 import { adminProtect } from "../middleware/adminProtect.js";
-import { Server } from "socket.io";
 
 const router = express.Router();
 
-router.get("/api/candidates", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const candidates = await Candidate.find();
     res.send(candidates);

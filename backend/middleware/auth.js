@@ -30,5 +30,3 @@ export const protect = async (req, res, next) => {
       .json({ msg: "No token provided, authorization denied" });
   }
 };
-
-export default { protect };

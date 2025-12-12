@@ -23,4 +23,19 @@ export const setupAxiosInterceptors = (token) => {
   );
 };
 
+export const adminSetupAxiosInterceptors = (adminToken) => {
+  if (requestInterceptorId !== null) {
+    axiosInstance.interceptors.request.eject(requestInterceptorId);
+  }
+  requestInterceptorId = axiosInstance.interceptors.request.use(
+    (config) => {
+      if (adminToken && adminToken !== "null" && adminToken !== "undefined") {
+        config.headers["Authorization"] = `Bearer ${adminToken}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );
+};
+
 export default axiosInstance;

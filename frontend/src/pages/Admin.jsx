@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axiosInstance, { setupAxiosInterceptors } from "./axios.js";
+import axiosInstance, { adminSetupAxiosInterceptors } from "./axios.js";
 import { useAdmin } from "../context/AdminContext";
 import ChartComponent from "../components/ChartComponent.jsx";
 import { io } from "socket.io-client";
@@ -10,8 +10,9 @@ const Admin = () => {
   const { logout, loading, admin } = useAdmin();
 
   useEffect(() => {
-    setupAxiosInterceptors(admin);
-  }, [admin]);
+    adminSetupAxiosInterceptors(admin) ||
+      adminSetupAxiosInterceptors(localStorage.getItem("adminToken"));
+  }, []);
 
   const handleAddCandidates = (event) => {
     setAddCandidates({
@@ -45,10 +46,14 @@ const Admin = () => {
         if (!admin) return;
 
         const socket = io("http://localhost:3000");
-        console.log(socket);
         socket.on("results", (data) => {
           setCandidateResult(data);
         });
+
+        return () => {
+          socket.disconnect();
+          console.log("Socket disconnected");
+        };
       } catch (error) {
         console.log(error);
       }
@@ -110,23 +115,25 @@ const Admin = () => {
         </div>
       </div>
 
-      <div>
-        {candidateResult.map((candidate) => (
-          <div key={candidate._id}>
-            <div>{candidate.name}</div>
-            <div>{candidate.party}</div>
-            <div>{candidate.votes}</div>
-          </div>
-        ))}
-      </div>
+      <div className="flex justify-center">
+        <div>
+          {candidateResult.map((candidate) => (
+            <div key={candidate._id} className="flex gap-x-4 justify-center">
+              <div>{candidate.name}</div>
+              <div>{candidate.party}</div>
+              <div>{candidate.votes}</div>
+            </div>
+          ))}
+        </div>
 
-      <div>
-        <ChartComponent
-          dataArray={candidateResult}
-          labelKey="name"
-          valueKey="votes"
-          chartLabel="Election Results"
-        />
+        <div className="w-[500px] h-[500px] cursor-pointer">
+          <ChartComponent
+            dataArray={candidateResult}
+            labelKey="name"
+            valueKey="votes"
+            chartLabel="Election Results"
+          />
+        </div>
       </div>
     </div>
   );

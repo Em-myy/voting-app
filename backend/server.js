@@ -29,29 +29,37 @@ app.use("/api/candidates", candidateRoutes);
 app.use("/api/admin", adminRoutes);
 
 io.on("connection", (socket) => {
-  console.log("Client connected", socket.id);
-
   (async () => {
     try {
       const candidates = await Candidate.find();
-      socket.emit("results: ", candidates);
+      socket.emit("results", candidates);
     } catch (error) {
       console.log(error);
     }
   })();
 
   socket.on("disconnect", () => {
-    console.log("CLient disconnected", socket.id);
+    console.log("Client disconnected");
   });
 });
 
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() =>
+  .then(() => {
+    Candidate.watch().on("change", async () => {
+      try {
+        const candidates = await Candidate.find();
+        io.emit("results", candidates);
+      } catch (error) {
+        console.log(error);
+      }
+    });
+
     server.listen(3000, () => {
       console.log("Server is running on port 3000");
-    })
-  )
+    });
+  })
+
   .catch((error) => {
     console.log(error);
   });

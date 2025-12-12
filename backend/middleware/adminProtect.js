@@ -32,5 +32,3 @@ export const adminProtect = async (req, res, next) => {
     return res.status(401).json({ msg: "No token, Authorization denied" });
   }
 };
-
-export default { adminProtect };
