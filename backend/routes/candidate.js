@@ -26,4 +26,29 @@ router.post("/", adminProtect, async (req, res) => {
   }
 });
 
+router.get("/details/:id", adminProtect, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const candidate = await Candidate.findById(id);
+
+    res.status(200).json({ candidate });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: "Error getting details" });
+  }
+});
+
+router.delete("/delete/:id", adminProtect, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    await Candidate.findByIdAndDelete(id);
+    res.status(200).json({ msg: "Candidate deleted successfuly" });
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: "Error deleting candidate" });
+  }
+});
+
 export default router;

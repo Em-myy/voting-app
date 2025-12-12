@@ -67,6 +67,34 @@ const Admin = () => {
     }
   }, [admin]);
 
+  const handleEdit = async (event) => {
+    const clickedButton = event.currentTarget;
+
+    const candidateId = clickedButton.dataset.id;
+
+    fetchCandidateDetails(candidateId);
+  };
+
+  const handleDelete = async (event) => {
+    const clickedButton = event.currentTarget;
+
+    const candidateId = clickedButton.dataset.id;
+
+    try {
+      await axiosInstance.delete(`/candidates/delete/${candidateId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleCandidateDetails = async (id) => {
+    try {
+      const res = await axiosInstance.get(`/candidates/details/${id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="flex flex-col w-[100%] items-center px-2 py-8">
@@ -145,6 +173,20 @@ const Admin = () => {
               <div>{candidate.name}</div>
               <div>{candidate.party}</div>
               <div>{candidate.votes}</div>
+              <button
+                data-id={candidate._id}
+                type="button"
+                onClick={(event) => handleEdit(event)}
+              >
+                Edit
+              </button>
+              <button
+                data-id={candidate._id}
+                type="button"
+                onClick={(event) => handleDelete(event)}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
