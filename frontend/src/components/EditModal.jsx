@@ -14,9 +14,26 @@ const EditModal = () => {
         <form>
           <div>
             <label>Candidate Name</label>
-            <input type="text" placeholder="Candidate Name" />
+            <input
+              type="text"
+              placeholder="Candidate Name"
+              onChange={handleChange}
+              required
+              value={editedForm.name}
+            />
           </div>
-          <div></div>
+
+          <div>
+            <label>Candidate Party</label>
+            <input
+              type="text"
+              placeholder="Candidate Name"
+              onChange={handleChange}
+              required
+              value={editedForm.value}
+            />
+          </div>
+          <button>Submit Changes</button>
         </form>
       </div>
     </div>
