@@ -3,6 +3,7 @@ import axiosInstance, { adminSetupAxiosInterceptors } from "./axios.js";
 import { useAdmin } from "../context/AdminContext";
 import ChartComponent from "../components/ChartComponent.jsx";
 import { io } from "socket.io-client";
+import EditModal from "../components/EditModal.jsx";
 
 const Admin = () => {
   const [addCandidates, setAddCandidates] = useState({ name: "", party: "" });
@@ -10,6 +11,11 @@ const Admin = () => {
   const { logout, admin } = useAdmin();
   const [msg, setMsg] = useState("");
   const [showMenu, setShowMenu] = useState(false);
+  const [editShowMenu, setEditShowMenu] = useState(false);
+  const [candidateDetails, setCandidateDetails] = useState({
+    name: "",
+    party: "",
+  });
 
   useEffect(() => {
     adminSetupAxiosInterceptors(admin) ||
@@ -72,7 +78,17 @@ const Admin = () => {
 
     const candidateId = clickedButton.dataset.id;
 
-    fetchCandidateDetails(candidateId);
+    try {
+      const res = await axiosInstance.get(`/candidates/details/${candidateId}`);
+
+      setCandidateDetails({
+        name: res.data.candidate.name,
+        party: res.data.candidate.party,
+      });
+      setEditShowMenu(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleDelete = async (event) => {
@@ -82,14 +98,6 @@ const Admin = () => {
 
     try {
       await axiosInstance.delete(`/candidates/delete/${candidateId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleCandidateDetails = async (id) => {
-    try {
-      const res = await axiosInstance.get(`/candidates/details/${id}`);
     } catch (error) {
       console.log(error);
     }
@@ -145,7 +153,6 @@ const Admin = () => {
           </form>
         </div>
       </div>
-
       {showMenu ? (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
@@ -165,7 +172,7 @@ const Admin = () => {
           </div>
         </div>
       ) : null}
-
+      {editShowMenu ? <EditModal candidateDetails={candidateDetails} /> : null}
       <div className="flex justify-center">
         <div>
           {candidateResult.map((candidate) => (

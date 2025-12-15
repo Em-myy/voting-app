@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const EditModal = () => {
-  const [editedForm, setEditedForm] = useState({ name: "", party: "" });
+const EditModal = (candidateDetails) => {
+  const [editedForm, setEditedForm] = useState({
+    name: candidateDetails.candidateDetails.name,
+    party: candidateDetails.candidateDetails.party,
+  });
 
   const handleChange = (event) => {
     setEditedForm({ ...editedForm, [event.target.name]: event.target.value });
   };
+
+  const handleEdit = () => {
+    console.log(editedForm);
+  };
   return (
     <div>
-      <button>Close</button>
+      <button type="button" onClick={handleEdit}>
+        Close
+      </button>
       <div>
         <h2>Edit Candidate</h2>
         <form>
@@ -30,11 +39,9 @@ const EditModal = () => {
               placeholder="Candidate Name"
               onChange={handleChange}
               required
-              value={editedForm.value}
+              value={editedForm.party}
             />
           </div>
-          <div>chudbhbdcbsdycysdvcysdvctysdctd</div>
-          <div>chudbhbdcbsdycysdvcysdvctysdctd</div>
           <button>Submit Changes</button>
         </form>
       </div>
