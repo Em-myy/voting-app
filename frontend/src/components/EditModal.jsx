@@ -34,6 +34,7 @@ const EditModal = () => {
             />
           </div>
           <div>chudbhbdcbsdycysdvcysdvctysdctd</div>
+          <div>chudbhbdcbsdycysdvcysdvctysdctd</div>
           <button>Submit Changes</button>
         </form>
       </div>
