@@ -13,6 +13,7 @@ const Admin = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [editShowMenu, setEditShowMenu] = useState(false);
   const [candidateDetails, setCandidateDetails] = useState({
+    id: "",
     name: "",
     party: "",
   });
@@ -82,6 +83,7 @@ const Admin = () => {
       const res = await axiosInstance.get(`/candidates/details/${candidateId}`);
 
       setCandidateDetails({
+        id: res.data.candidate._id,
         name: res.data.candidate.name,
         party: res.data.candidate.party,
       });

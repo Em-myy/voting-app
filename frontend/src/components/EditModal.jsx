@@ -1,26 +1,46 @@
 import { useEffect, useState } from "react";
+import axiosInstance, { adminSetupAxiosInterceptors } from "../pages/axios";
 
-const EditModal = (candidateDetails) => {
+const EditModal = ({ candidateDetails }) => {
   const [editedForm, setEditedForm] = useState({
-    name: candidateDetails.candidateDetails.name,
-    party: candidateDetails.candidateDetails.party,
+    name: "",
+    party: "",
   });
+
+  useEffect(() => {
+    adminSetupAxiosInterceptors ||
+      adminSetupAxiosInterceptors(localStorage.getItem("adminToken"));
+  }, []);
 
   const handleChange = (event) => {
     setEditedForm({ ...editedForm, [event.target.name]: event.target.value });
   };
 
-  const handleEdit = () => {
-    console.log(editedForm);
+  useEffect(() => {
+    setEditedForm({
+      name: candidateDetails.name,
+      party: candidateDetails.party,
+    });
+  }, [candidateDetails.name, candidateDetails.party]);
+
+  const handleSubmit = async () => {
+    const candidateId = candidateDetails.id;
+
+    try {
+      const res = await axiosInstance.patch(
+        `/candidates/edit/${candidateId}`,
+        editedForm
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   return (
     <div>
-      <button type="button" onClick={handleEdit}>
-        Close
-      </button>
       <div>
         <h2>Edit Candidate</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label>Candidate Name</label>
             <input
@@ -29,6 +49,7 @@ const EditModal = (candidateDetails) => {
               onChange={handleChange}
               required
               value={editedForm.name}
+              name="name"
             />
           </div>
 
@@ -36,13 +57,14 @@ const EditModal = (candidateDetails) => {
             <label>Candidate Party</label>
             <input
               type="text"
-              placeholder="Candidate Name"
+              placeholder="Candidate Party"
               onChange={handleChange}
               required
               value={editedForm.party}
+              name="party"
             />
           </div>
-          <button>Submit Changes</button>
+          <button type="submit">Submit Changes</button>
         </form>
       </div>
     </div>

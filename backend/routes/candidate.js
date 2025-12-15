@@ -39,6 +39,21 @@ router.get("/details/:id", adminProtect, async (req, res) => {
   }
 });
 
+router.patch("/edit/:id", adminProtect, async (req, res) => {
+  const id = req.params.id;
+
+  try {
+    const updatedCandidates = await Candidate.findByIdAndUpdate(
+      id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json({ msg: "Candidate updated successfully" });
+  } catch (error) {
+    res.status(404).json(error);
+  }
+});
+
 router.delete("/delete/:id", adminProtect, async (req, res) => {
   const id = req.params.id;
 
