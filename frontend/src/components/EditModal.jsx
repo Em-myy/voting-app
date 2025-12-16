@@ -53,6 +53,8 @@ const EditModal = ({ candidateDetails }) => {
             />
           </div>
 
+          <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+
           <div>
             <label>Candidate Party</label>
             <input
