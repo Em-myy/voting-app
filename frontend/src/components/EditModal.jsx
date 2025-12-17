@@ -38,36 +38,45 @@ const EditModal = ({ candidateDetails }) => {
 
   return (
     <div>
-      <div className="text-[24px]">
-        <h2 className="text-center">Edit Candidate</h2>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>Candidate Name</label>
-            <input
-              type="text"
-              placeholder="Candidate Name"
-              onChange={handleChange}
-              required
-              value={editedForm.name}
-              name="name"
-              className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
-            />
-          </div>
+      <div>
+        <h2 className="text-center text-4xl mb-4">Edit Candidate</h2>
+        <div className="text-[24px]">
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col mb-4">
+              <label>Candidate Name</label>
+              <input
+                type="text"
+                placeholder="Candidate Name"
+                onChange={handleChange}
+                required
+                value={editedForm.name}
+                name="name"
+                className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
+              />
+            </div>
 
-          <div>
-            <label>Candidate Party</label>
-            <input
-              type="text"
-              placeholder="Candidate Party"
-              onChange={handleChange}
-              required
-              value={editedForm.party}
-              name="party"
-              className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
-            />
-          </div>
-          <button type="submit">Submit Changes</button>
-        </form>
+            <div className="flex flex-col mb-4">
+              <label>Candidate Party</label>
+              <input
+                type="text"
+                placeholder="Candidate Party"
+                onChange={handleChange}
+                required
+                value={editedForm.party}
+                name="party"
+                className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
+              />
+            </div>
+            <div className="flex justify-center">
+              <button
+                type="submit"
+                className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer transition duration-200 active:scale-110 active:shadow-xl"
+              >
+                Submit Changes
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );

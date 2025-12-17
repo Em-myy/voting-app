@@ -114,7 +114,7 @@ const Vote = () => {
             <p className="text-xl mb-4">{msg}</p>
             <button
               onClick={() => setShowMenu(false)}
-              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer transition duration-200 active:scale-110 active:shadow-xl"
             >
               Close
             </button>

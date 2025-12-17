@@ -168,7 +168,7 @@ const Admin = () => {
             <p className="text-xl mb-4">{msg}</p>
             <button
               onClick={() => setShowMenu(false)}
-              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+              className="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer transition duration-200 active:scale-110 active:shadow-xl"
             >
               Close
             </button>
@@ -182,13 +182,15 @@ const Admin = () => {
             onClick={(e) => e.stopPropagation()}
             className="bg-[#F6F6F6] p-4 rounded-xl"
           >
-            <button
-              type="button"
-              onClick={() => setEditShowMenu(false)}
-              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
-            >
-              Close
-            </button>
+            <div className="flex justify-end">
+              <button
+                type="button"
+                onClick={() => setEditShowMenu(false)}
+                className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer transition duration-200 active:scale-110 active:shadow-xl"
+              >
+                Close
+              </button>
+            </div>
             <EditModal candidateDetails={candidateDetails} />
           </div>
         </div>
