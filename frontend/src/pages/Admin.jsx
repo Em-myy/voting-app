@@ -155,6 +155,7 @@ const Admin = () => {
           </form>
         </div>
       </div>
+
       {showMenu ? (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
@@ -174,11 +175,29 @@ const Admin = () => {
           </div>
         </div>
       ) : null}
-      {editShowMenu ? <EditModal candidateDetails={candidateDetails} /> : null}
-      <div className="flex justify-center">
-        <div>
+
+      {editShowMenu ? (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 text-black">
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="bg-[#F6F6F6] p-4 rounded-xl"
+          >
+            <button
+              type="button"
+              onClick={() => setEditShowMenu(false)}
+              className="bg-red-500 text-white px-4 py-2 rounded cursor-pointer"
+            >
+              Close
+            </button>
+            <EditModal candidateDetails={candidateDetails} />
+          </div>
+        </div>
+      ) : null}
+
+      <div className="w-full flex flex-col items-center">
+        <div className="w-[60%] mb-4 text-[25px]">
           {candidateResult.map((candidate) => (
-            <div key={candidate._id} className="flex gap-x-4 justify-center">
+            <div key={candidate._id} className="grid grid-cols-5 gap-x-4">
               <div>{candidate.name}</div>
               <div>{candidate.party}</div>
               <div>{candidate.votes}</div>
@@ -186,6 +205,7 @@ const Admin = () => {
                 data-id={candidate._id}
                 type="button"
                 onClick={(event) => handleEdit(event)}
+                className="bg-indigo-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
               >
                 Edit
               </button>
@@ -193,6 +213,7 @@ const Admin = () => {
                 data-id={candidate._id}
                 type="button"
                 onClick={(event) => handleDelete(event)}
+                className="bg-red-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
               >
                 Delete
               </button>
@@ -200,7 +221,7 @@ const Admin = () => {
           ))}
         </div>
 
-        <div className="w-[500px] h-[500px] cursor-pointer">
+        <div className="w-[700px] h-[700px] cursor-pointer">
           <ChartComponent
             dataArray={candidateResult}
             labelKey="name"

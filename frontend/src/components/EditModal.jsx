@@ -38,8 +38,8 @@ const EditModal = ({ candidateDetails }) => {
 
   return (
     <div>
-      <div>
-        <h2>Edit Candidate</h2>
+      <div className="text-[24px]">
+        <h2 className="text-center">Edit Candidate</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Candidate Name</label>
@@ -50,10 +50,9 @@ const EditModal = ({ candidateDetails }) => {
               required
               value={editedForm.name}
               name="name"
+              className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
             />
           </div>
-
-          <div>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
 
           <div>
             <label>Candidate Party</label>
@@ -64,6 +63,7 @@ const EditModal = ({ candidateDetails }) => {
               required
               value={editedForm.party}
               name="party"
+              className="text-black focus:outline-none border-2 border-gray-300 p-[5px] rounded-xl"
             />
           </div>
           <button type="submit">Submit Changes</button>
