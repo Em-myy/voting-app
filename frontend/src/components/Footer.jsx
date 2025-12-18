@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 const Footer = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start md:justify-around w-[100%] mt-2 p-2 rounded-tl-[50px] rounded-br-[40px] bg-[#F6F6F6] dark:bg-[#32596D] shadow-xl dark:text-[#CEE8F5]">
+    <div className="flex flex-col md:flex-row items-center md:items-start md:justify-around w-[100%] mt-2 p-2 rounded-tl-[50px] rounded-br-[40px] bg-[#F6F6F6] dark:bg-[#32596D] shadow-xl text-indigo-600 dark:text-[#CEE8F5]">
       <div className="mt-4 ">
         <div className="text-[#B3A375] dark:text-[#DEC991] text-5xl font-bold animate-bounce">
           VoteIn

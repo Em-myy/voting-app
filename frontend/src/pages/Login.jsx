@@ -14,6 +14,8 @@ const Login = () => {
 
   const VOTER_TOAST_ID = "voter_login_configuration";
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -26,10 +28,7 @@ const Login = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/authentication/login",
-        form
-      );
+      const res = await axios.post(`${API_URL}/api/authentication/login`, form);
 
       toast.success("Sign In successful", {
         id: VOTER_TOAST_ID,

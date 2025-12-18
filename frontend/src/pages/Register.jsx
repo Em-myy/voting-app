@@ -15,6 +15,8 @@ const Register = () => {
 
   const VOTER_TOAST_ID = "voter_register_configuration";
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -28,7 +30,7 @@ const Register = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/authentication/register",
+        `${API_URL}/api/authentication/register`,
         form
       );
 

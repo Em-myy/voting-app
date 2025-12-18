@@ -10,7 +10,6 @@ const AdminLogin = () => {
   const [form, setForm] = useState({ email: "", password: "", secretKey: "" });
   const navigate = useNavigate();
   const [isText, setIsText] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
 
   const ADMIN_TOAST_ID = "admin_register_configuration";
 
@@ -24,13 +23,12 @@ const AdminLogin = () => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/admin/login",
-        form
-      );
+      const res = await axios.post(`${API_URL}/api/admin/login`, form);
 
       toast.success("Sign In successful", {
         id: ADMIN_TOAST_ID,
@@ -46,7 +44,7 @@ const AdminLogin = () => {
         navigate("/admin");
       }, 4000);
     } catch (error) {
-      toast.error("Sign In Failed, Likely Not an Admin ", {
+      toast.error("Sign In Failed", {
         id: ADMIN_TOAST_ID,
         className: "md:text-2xl mr-4",
         position: "bottom-right",

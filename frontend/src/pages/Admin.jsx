@@ -18,6 +18,8 @@ const Admin = () => {
     party: "",
   });
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     adminSetupAxiosInterceptors(admin) ||
       adminSetupAxiosInterceptors(localStorage.getItem("adminToken"));
@@ -55,7 +57,7 @@ const Admin = () => {
       try {
         if (!admin) return;
 
-        const socket = io("http://localhost:3000");
+        const socket = io(API_URL);
         socket.on("results", (data) => {
           setCandidateResult(data);
         });

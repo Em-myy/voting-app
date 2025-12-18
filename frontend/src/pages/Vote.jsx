@@ -12,10 +12,12 @@ const Vote = () => {
   const [userDetails, setUserDetails] = useState([]);
   const [showMenu, setShowMenu] = useState(false);
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   useEffect(() => {
     const fetchCandidates = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/candidates");
+        const res = await axios.get(`${API_URL}/api/candidates`);
         setCandidate(res.data);
       } catch (error) {
         setMsg("Failed to load candidates");
@@ -29,7 +31,7 @@ const Vote = () => {
       if (user?.token) {
         try {
           const res = await axios.get(
-            "http://localhost:3000/api/authentication/profile",
+            `${API_URL}/api/authentication/profile`,
 
             { headers: { Authorization: `Bearer ${user.token}` } }
           );
@@ -51,7 +53,7 @@ const Vote = () => {
     }
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/vote",
+        `${API_URL}/api/vote`,
         { candidateId: selected },
         { headers: { Authorization: `Bearer ${user.token}` } }
       );

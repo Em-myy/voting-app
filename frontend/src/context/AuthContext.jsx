@@ -18,6 +18,8 @@ export const AuthProvider = ({ children }) => {
   const [isInitialized, setIsInitialized] = useState(false);
   const [loading, setLoading] = useState(true);
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const login = async (token, user) => {
     localStorage.setItem("token", token);
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
 
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
     axios
-      .get("http://localhost:3000/api/authentication/profile")
+      .get(`${API_URL}/api/authentication/profile`)
       .then((res) => setUser(res.data.user))
       .catch(() => {
         localStorage.removeItem("token");

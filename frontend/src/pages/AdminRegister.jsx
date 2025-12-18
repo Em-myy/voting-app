@@ -18,6 +18,8 @@ const AdminRegister = () => {
 
   const ADMIN_TOAST_ID = "admin_register_configuration";
 
+  const API_URL = import.meta.env.VITE_BACKEND_URL;
+
   const handleVisibility = () => {
     setIsText((prev) => !prev);
   };
@@ -30,10 +32,7 @@ const AdminRegister = () => {
     event.preventDefault();
 
     try {
-      const res = await axios.post(
-        "http://localhost:3000/api/admin/register",
-        form
-      );
+      const res = await axios.post(`${API_URL}/api/admin/register`, form);
 
       toast.success("Registration successful", {
         id: ADMIN_TOAST_ID,
