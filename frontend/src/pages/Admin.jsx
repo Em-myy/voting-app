@@ -201,7 +201,7 @@ const Admin = () => {
       ) : null}
 
       <div className="w-full flex flex-col items-center">
-        <div className="md:w-[60%] mb-4 text-[25px]">
+        <div className="w-[90%] md:w-[60%] mb-4 text-[25px]">
           {candidateResult.map((candidate) => (
             <div
               key={candidate._id}
@@ -214,7 +214,7 @@ const Admin = () => {
                 data-id={candidate._id}
                 type="button"
                 onClick={(event) => handleEdit(event)}
-                className="bg-indigo-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
+                className="w-full bg-indigo-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
               >
                 Edit
               </button>
