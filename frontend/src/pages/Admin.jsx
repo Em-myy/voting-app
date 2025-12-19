@@ -110,8 +110,10 @@ const Admin = () => {
   return (
     <div>
       <div className="flex flex-col w-[100%] items-center px-2 py-8">
-        <h1 className="text-6xl mb-2">Add Candidates</h1>
-        <div className="w-[70%] bg-[#F6F6F6] rounded-xl p-12">
+        <h1 className="text-4xl mb-2 text-center md:text-6xl">
+          Add Candidates
+        </h1>
+        <div className="w-full md:w-[70%] bg-[#F6F6F6] rounded-xl p-12">
           <form onSubmit={handleSubmitCandidates}>
             <div className="flex flex-col mb-2">
               <label className="text-[24px]">Candidate Name:</label>
@@ -199,9 +201,12 @@ const Admin = () => {
       ) : null}
 
       <div className="w-full flex flex-col items-center">
-        <div className="w-[60%] mb-4 text-[25px]">
+        <div className="md:w-[60%] mb-4 text-[25px]">
           {candidateResult.map((candidate) => (
-            <div key={candidate._id} className="grid grid-cols-5 gap-x-4">
+            <div
+              key={candidate._id}
+              className="flex flex-col items-center md:grid md:grid-cols-5 md:gap-x-4"
+            >
               <div>{candidate.name}</div>
               <div>{candidate.party}</div>
               <div>{candidate.votes}</div>
@@ -217,7 +222,7 @@ const Admin = () => {
                 data-id={candidate._id}
                 type="button"
                 onClick={(event) => handleDelete(event)}
-                className="bg-red-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
+                className="w-full bg-red-500 cursor-pointer transition duration-200 rounded-xl active:scale-110 active:shadow-xl mb-2 text-white"
               >
                 Delete
               </button>
@@ -225,7 +230,7 @@ const Admin = () => {
           ))}
         </div>
 
-        <div className="w-[700px] h-[700px] cursor-pointer">
+        <div className="w-[400px] md:w-[700px] h-[400px] md:h-[700px] cursor-pointer">
           <ChartComponent
             dataArray={candidateResult}
             labelKey="name"
