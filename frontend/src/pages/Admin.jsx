@@ -230,7 +230,7 @@ const Admin = () => {
           ))}
         </div>
 
-        <div className="w-[400px] md:w-[700px] h-[400px] md:h-[700px] cursor-pointer">
+        <div className="w-[400px] md:w-[700px] h-[400px] md:h-[700px] p-4 cursor-pointer">
           <ChartComponent
             dataArray={candidateResult}
             labelKey="name"

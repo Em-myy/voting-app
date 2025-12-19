@@ -60,7 +60,7 @@ const AdminRegister = () => {
         <Navbar />
       </div>
       <div className="flex h-[50vh] items-center justify-center p-2">
-        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[200px] md:mt-[250px] border-gray-300">
+        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[250px] md:mt-[400px] border-gray-300">
           <form onSubmit={handleSubmit}>
             <h1 className="text-3xl md:text-6xl text-center mb-8">
               Admin Register
