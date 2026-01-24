@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import image1 from "../assets/secondImage-Photoroom.png";
 import Navbar from "../components/Navbar";
 
@@ -25,6 +26,7 @@ const Home = () => {
             <div className="text-[35px] dark:text-[#CEE8F5] text-center md:text-start">
               Please vote for a candidate
             </div>
+            <Link to="/home">Access Dashboard</Link>
           </div>
         </div>
       </div>
