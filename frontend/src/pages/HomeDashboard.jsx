@@ -13,7 +13,7 @@ const HomeDashboard = () => {
             to="/voterHome"
             className="block w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition duration-300"
           >
-            Voter Access
+            Voter Accessaaaaaaaaaaa
           </Link>
           <Link
             to="/adminHome"
