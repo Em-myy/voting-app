@@ -13,6 +13,7 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
 import HomeDashboard from "./pages/HomeDashboard";
+import VoterHome from "./pages/VoterHome";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/home" element={<HomeDashboard />} />
+          <Route path="/voterHome" element={<VoterHome />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
