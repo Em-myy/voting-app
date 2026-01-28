@@ -14,6 +14,7 @@ import AdminLogin from "./pages/AdminLogin";
 import AdminRegister from "./pages/AdminRegister";
 import HomeDashboard from "./pages/HomeDashboard";
 import VoterHome from "./pages/VoterHome";
+import AdminHome from "./pages/AdminHome";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/home" element={<HomeDashboard />} />
           <Route path="/voterHome" element={<VoterHome />} />
+          <Route path="/adminHome" element={<AdminHome />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/AdminLogin" element={<AdminLogin />} />
