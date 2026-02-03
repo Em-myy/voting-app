@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
 
 const HomeDashboard = () => {
   return (
@@ -17,11 +18,18 @@ const HomeDashboard = () => {
           </Link>
           <Link
             to="/adminHome"
-            className="block w-full bg-gray-800 hover:bg-gray-900 text-white font-semibold py-3 px-4 rounded-lg text-center transition duration-300"
+            className="block w-full bg-gray-600 hover:bg-gray-900 text-white font-semibold py-3 px-4 rounded-lg text-center transition duration-300"
           >
             Admin Dashboard
           </Link>
         </div>
+        <Link
+          to="/"
+          className="flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition mt-4"
+        >
+          <FaArrowLeft />
+          <span>Back to Dashboard</span>
+        </Link>
       </div>
     </div>
   );

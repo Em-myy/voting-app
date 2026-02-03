@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -31,7 +31,7 @@ const Register = () => {
     try {
       const res = await axios.post(
         `${API_URL}/api/authentication/register`,
-        form
+        form,
       );
 
       toast.success("Registration successful", {
@@ -57,9 +57,10 @@ const Register = () => {
   return (
     <div className="p-2">
       <Toaster />
-      <div className="dark:bg-zinc-500 bg-zinc-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
+      <div className="mb-8 md:mb-2">
         <Navbar />
       </div>
+
       <div className="flex h-[50vh] items-center justify-center p-2">
         <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[100px] md:mt-[200px] border-gray-300">
           <form onSubmit={handleSubmit}>
@@ -108,12 +109,19 @@ const Register = () => {
 
               <button
                 type="submit"
-                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer"
+                className="text-[26px] bg-blue-800 text-white py-2 mt-2 cursor-pointer"
               >
                 Register
               </button>
             </div>
           </form>
+          <Link
+            to="/voterHome"
+            className="flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition mt-4"
+          >
+            <FaArrowLeft />
+            <span>Back to Voter Home</span>
+          </Link>
         </div>
       </div>
     </div>

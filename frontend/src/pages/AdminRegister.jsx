@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "react-hot-toast";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AdminRegister = () => {
   const [form, setForm] = useState({
@@ -56,11 +56,11 @@ const AdminRegister = () => {
   return (
     <div className="p-2">
       <Toaster />
-      <div className="dark:bg-slate-500 bg-slate-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
-        <Navbar />
-      </div>
+
+      <Navbar />
+
       <div className="flex h-[50vh] items-center justify-center p-2">
-        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[250px] md:mt-[400px] border-gray-300">
+        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[300px] md:mt-[300px] border-gray-300">
           <form onSubmit={handleSubmit}>
             <h1 className="text-3xl md:text-6xl text-center mb-8">
               Admin Register
@@ -120,12 +120,19 @@ const AdminRegister = () => {
 
               <button
                 type="submit"
-                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer"
+                className="text-[26px] bg-gray-700 text-white py-2 mt-2 cursor-pointer"
               >
                 Register Admin
               </button>
             </div>
           </form>
+          <Link
+            to="/adminHome"
+            className="flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition mt-4"
+          >
+            <FaArrowLeft />
+            <span>Back to Admin Home</span>
+          </Link>
         </div>
       </div>
     </div>

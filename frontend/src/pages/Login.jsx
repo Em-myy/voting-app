@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "react-hot-toast";
 
@@ -52,7 +52,7 @@ const Login = () => {
   return (
     <div className="p-2">
       <Toaster />
-      <div className="dark:bg-zinc-500 bg-zinc-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
+      <div className="mb-8 md:mb-0">
         <Navbar />
       </div>
       <div className="flex h-[50vh] items-center justify-center p-2">
@@ -98,12 +98,19 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="text-[26px] bg-black text-white py-2 mt-2 cursor-pointer mb-2"
+                className="text-[26px] bg-blue-800 text-white py-2 mt-2 cursor-pointer mb-2"
               >
                 Login
               </button>
             </div>
           </form>
+          <Link
+            to="/voterHome"
+            className="flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition mt-2"
+          >
+            <FaArrowLeft />
+            <span>Back to Voter Home</span>
+          </Link>
         </div>
       </div>
     </div>

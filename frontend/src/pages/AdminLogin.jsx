@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAdmin } from "../context/AdminContext";
 import Navbar from "../components/Navbar";
 import toast, { Toaster } from "react-hot-toast";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaArrowLeft, FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AdminLogin = () => {
   const [form, setForm] = useState({ email: "", password: "", secretKey: "" });
@@ -55,9 +55,9 @@ const AdminLogin = () => {
   return (
     <div className="p-2">
       <Toaster />
-      <div className="dark:bg-slate-500 bg-slate-200 rounded-tl-[100px] rounded-br-[100px] md:rounded-tr-[100px] md:rounded-bl-[100px] md:py-[25px] mt-4">
-        <Navbar />
-      </div>
+
+      <Navbar />
+
       <div className="flex h-[50vh] items-center justify-center p-2">
         <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[200px] md:mt-[250px] border-gray-300">
           <form onSubmit={handleSubmit}>
@@ -123,6 +123,13 @@ const AdminLogin = () => {
               </button>
             </div>
           </form>
+          <Link
+            to="/adminHome"
+            className="flex items-center justify-center gap-2 text-sm text-gray-400 hover:text-gray-600 transition mt-4"
+          >
+            <FaArrowLeft />
+            <span>Back to Admin Home</span>
+          </Link>
         </div>
       </div>
     </div>

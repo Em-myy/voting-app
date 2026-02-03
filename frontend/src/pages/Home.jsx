@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import image1 from "../assets/secondImage-Photoroom.png";
 import Navbar from "../components/Navbar";
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
   return (
     <div className="w-full bg-yellow-300 dark:bg-yellow-500 min-h-dvh m-0">
       <div className="bg-[#CCE7F4] dark:bg-[#366075] min-h-screen w-full rounded-tl-[200px] md:rounded-tl-[400px] rounded-br-[200px] md:rounded-br-[400px]">
-        <div className="flex pt-4 justify-center md:justify-end">
+        <div className="flex pt-4 justify-center md:justify-end md:mr-[70px]">
           <Navbar />
         </div>
         <div className="flex flex-col md:flex-row justify-evenly">
@@ -26,7 +27,13 @@ const Home = () => {
             <div className="text-[35px] dark:text-[#CEE8F5] text-center md:text-start">
               Please vote for a candidate
             </div>
-            <Link to="/home">Access Dashboard</Link>
+            <Link
+              to="/home"
+              className=" flex items-center gap-2 mt-2 font-semibold text-xl text-yellow-600 hover:text-yellow-700"
+            >
+              <span>Access Portal</span>
+              <FaArrowRight />
+            </Link>
           </div>
         </div>
       </div>
