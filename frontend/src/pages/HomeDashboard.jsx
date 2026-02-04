@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-
+const
 const HomeDashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
