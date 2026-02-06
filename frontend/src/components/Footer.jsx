@@ -81,7 +81,7 @@ const Footer = () => {
           <div>
             <Link
               to="/"
-              className="hover:text-yellow-500 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
+              className="hover:text-yellow-600 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
             >
               HOME
             </Link>
@@ -89,7 +89,7 @@ const Footer = () => {
           <div>
             <Link
               to="/about"
-              className="hover:text-yellow-500 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
+              className="hover:text-yellow-600 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
             >
               ABOUT
             </Link>
@@ -97,7 +97,7 @@ const Footer = () => {
           <div>
             <Link
               to="/register"
-              className="hover:text-yellow-500 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
+              className="hover:text-yellow-600 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
             >
               REGISTER
             </Link>
@@ -105,7 +105,7 @@ const Footer = () => {
           <div>
             <Link
               to="/login"
-              className="hover:text-yellow-500 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
+              className="hover:text-yellow-600 hover:underline hover:decoration-double hover:decoration-red-700 transition duration-700 ease-in-out"
             >
               LOGIN
             </Link>

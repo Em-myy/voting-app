@@ -111,7 +111,7 @@ const Admin = () => {
     <div>
       <div className="flex flex-col w-[100%] items-center px-2 py-8">
         <h1 className="text-4xl mb-2 text-center md:text-6xl">
-          Add Candidates
+          ADD CANDIDATES
         </h1>
         <div className="w-full md:w-[70%] bg-[#F6F6F6] rounded-xl p-12">
           <form onSubmit={handleSubmitCandidates}>
