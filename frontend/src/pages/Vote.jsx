@@ -3,6 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { io } from "socket.io-client";
 
 const Vote = () => {
   const [candidate, setCandidate] = useState([]);
@@ -27,13 +28,37 @@ const Vote = () => {
   }, []);
 
   useEffect(() => {
+    const fetchResults = () => {
+      try {
+        if (!user) return;
+
+        const socket = io(API_URL);
+        socket.on("results", (data) => {
+          setCandidate(data);
+        });
+
+        return () => {
+          socket.disconnect();
+          console.log("Socket disconnected");
+        };
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (user) {
+      fetchResults();
+    }
+  }, [user]);
+
+  useEffect(() => {
     const fetchDetails = async () => {
       if (user?.token) {
         try {
           const res = await axios.get(
             `${API_URL}/api/authentication/profile`,
 
-            { headers: { Authorization: `Bearer ${user.token}` } }
+            { headers: { Authorization: `Bearer ${user.token}` } },
           );
           setUserDetails(res.data.user);
         } catch (error) {
@@ -55,7 +80,7 @@ const Vote = () => {
       const res = await axios.post(
         `${API_URL}/api/vote`,
         { candidateId: selected },
-        { headers: { Authorization: `Bearer ${user.token}` } }
+        { headers: { Authorization: `Bearer ${user.token}` } },
       );
       setShowMenu(true);
       setMsg(res.data.msg);

@@ -18,6 +18,7 @@ router.post("/", adminProtect, async (req, res) => {
   try {
     const newCandidate = new Candidate(req.body);
     await newCandidate.save();
+
     res
       .status(201)
       .json({ msg: "candidates added successfully", newCandidate });
@@ -46,8 +47,9 @@ router.patch("/edit/:id", adminProtect, async (req, res) => {
     const updatedCandidates = await Candidate.findByIdAndUpdate(
       id,
       { $set: req.body },
-      { new: true }
+      { new: true },
     );
+
     res.status(200).json({ msg: "Candidate updated successfully" });
   } catch (error) {
     res.status(404).json(error);
@@ -59,6 +61,7 @@ router.delete("/delete/:id", adminProtect, async (req, res) => {
 
   try {
     await Candidate.findByIdAndDelete(id);
+
     res.status(200).json({ msg: "Candidate deleted successfuly" });
   } catch (error) {
     console.log(error);

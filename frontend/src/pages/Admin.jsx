@@ -109,7 +109,7 @@ const Admin = () => {
 
   return (
     <div>
-      <div className="flex flex-col w-[100%] items-center px-2 py-8">
+      <div className="flex flex-col w-full items-center px-2 py-8">
         <h1 className="text-4xl mb-2 text-center md:text-6xl">
           ADD CANDIDATES
         </h1>
