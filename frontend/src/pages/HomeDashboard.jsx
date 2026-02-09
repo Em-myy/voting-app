@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
 const HomeDashboard = () => {
-  return (satyrday sunday
+  return (satyrday sunday monday
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
       <div className="bg-white shadow-xl rounded-2xl w-full max-w-md p-8">
         <div className="text-center mb-8">
