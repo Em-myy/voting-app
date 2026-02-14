@@ -4,7 +4,6 @@ const About = () => {
   return (
     <div className="dark:bg-[#366075] h-[100%] p-2">
       <Navbar />
-      fuckkkkkkk
       <div className="text-5xl md:text-8xl text-center pb-2">About Us</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         <div className="flex flex-col gap-y-2">
