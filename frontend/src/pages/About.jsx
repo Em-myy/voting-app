@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 const About = () => {
-  return (today
+  return (today, another day
     <div className="dark:bg-[#366075] h-[100%] p-2">
       <Navbar />
       <div className="text-5xl md:text-8xl text-center pb-2">About Us</div>
