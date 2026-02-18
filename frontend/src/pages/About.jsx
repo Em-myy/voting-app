@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 const About = () => {
   return (
-    <div className="dark:bg-[#366075] h-[100%] p-2">
+    <div className="dark:bg-[#366075] h-full p-2">
       <Navbar />
       <div className="text-5xl md:text-8xl text-center pb-2">About Us</div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
