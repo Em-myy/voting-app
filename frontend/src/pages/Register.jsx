@@ -62,7 +62,7 @@ const Register = () => {
       </div>
 
       <div className="flex h-[50vh] items-center justify-center p-2">
-        <div className="w-[100%] md:w-[50%] border-2 px-[10px] md:px-[40px] py-[15px] md:py-[50px] mt-[100px] md:mt-[200px] border-gray-300">
+        <div className="w-full md:w-[50%] border-2 px-2.5 md:px-10 py-[15px] md:py-[50px] mt-[100px] md:mt-[200px] border-gray-300">
           <form onSubmit={handleSubmit}>
             <h1 className="text-3xl md:text-6xl text-center mb-8">Register</h1>
             <div className="flex flex-col gap-2">
@@ -95,7 +95,7 @@ const Register = () => {
                     name="password"
                     type={isText ? "text" : "password"}
                     onChange={handleChange}
-                    className="text-black text-[22px] focus:outline-none p-2 w-[100%]"
+                    className="text-black text-[22px] focus:outline-none p-2 w-full"
                   />
                   <button
                     onClick={handleVisibility}
