@@ -29,7 +29,7 @@ const Home = () => {
             </div>
             <Link
               to="/home"
-              className=" flex items-center gap-2 mt-2 font-semibold text-xl text-yellow-600 hover:text-yellow-700"
+              className=" flex items-center justify-center md:justify-start gap-2 mt-2 font-semibold text-xl text-yellow-600 hover:text-yellow-700"
             >
               <span>Access Portal</span>
               <FaArrowRight />
